@@ -197,19 +197,11 @@
         <div class="login-box">
             <img width="200px" src="https://www.upload.ee/image/14272915/LSPDLOGO.png" alt="">
             <h3>LSPD Panel</h3>
-            <div class="form-group">
-                <label for="characterName">Rozet Numaranız</label>
-                <input type="text" id="characterName" placeholder="Rozet Numaranız">
-            </div>
 
             <div class="form-group">
                 <label for="selection">Rapor Türününüz</label>
                 <select id="selection">
                     <option value="FTP">Field Training Program</option>
-                    <option value="METRO">Metropolitan</option>
-                    <option value="AIR">Air Support</option>
-                    <option value="CTD">Central Traffic</option>
-                    <option value="GND">Gang Enforcement</option>
                 </select>
             </div>
 
@@ -260,17 +252,10 @@
         <!-- FTP Formu Bitiş -->
 
     <script>
-        const validCharacterNames = [
-            "1"
-        ];
 
         function validateCharacter() {
-            const characterName = document.getElementById("characterName").value;
             const selectedOption = document.getElementById("selection").value;
             const errorMessage = document.getElementById("error-message");
-
-            if (validCharacterNames.includes(characterName)) {
-                errorMessage.textContent = "";
 
                 if (selectedOption === "FTP") {
                     document.getElementById("loginPage").style.display = "none";
@@ -279,10 +264,7 @@
                 } else {
                     alert(selectedOption + " formu henüz mevcut değil.");
                 }
-            } else {
-                errorMessage.textContent = "Geçersiz Rozet Numarası Girdiniz";
             }
-        }
 
         function createFTPQuestions() {
             const questions = [
