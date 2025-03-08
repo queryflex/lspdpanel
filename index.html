@@ -215,6 +215,7 @@
     <!-- FTP Formu -->
     <div id="ftpPage" class="container" style="display: none;">
         <h1>FTP Formu</h1>
+        <h1 style="font-size: 15px;">( <span style="color: red;">*</span> kanıtlandırılması gereken zorunlu konuları belirtir )</h1>
         <div id="questionsContainer"></div>
 
         <div class="form-group">
@@ -266,21 +267,21 @@
                 }
             }
 
-        function createFTPQuestions() {
-            const questions = [
+            function createFTPQuestions() {
+    const questions = [
         { id: "update", title: "Stajyer memurun update durumu hakkında olan görüşünüz nedir?", minWords: 20 },
-        { id: "situation1055", title: "Stajyer memurun 10-55 durumu hakkında olan görüşünüz nedir?", minWords: 35 },
+        { id: "situation1055", title: 'Stajyer memurun 10-55 durumu hakkında olan görüşünüz nedir? <span style="color: red;">*</span>', minWords: 35 },
         { id: "situation1066", title: "Stajyer memurun 10-66 (Felony) durumu hakkında olan görüşünüz nedir?", minWords: 35 },
-        { id: "radioUse", title: "Stajyer memurun telsiz kullanımı hakkında olan görüşünüz nedir?", minWords: 15 },
+        { id: "radioUse", title: 'Stajyer memurun telsiz kullanımı hakkında olan görüşünüz nedir? <span style="color: red;">*</span>', minWords: 15 },
         { id: "tacticalFrequency", title: "Stajyer memurun taktiksel frekans durumu hakkında olan görüşünüz nedir?", minWords: 15 },
         { id: "civilCommunication", title: "Stajyer memurun siviller ile iletişimi hakkında olan görüşünüz nedir?", minWords: 15 },
-        { id: "forceUse", title: "Stajyer memurun güç kullanımı konusu hakkında olan görüşünüz nedir?", minWords: 35 },
+        { id: "forceUse", title: 'Stajyer memurun güç kullanımı konusu hakkında olan görüşünüz nedir? <span style="color: red;">*</span>', minWords: 35 },
         { id: "hierarchy", title: "Stajyer memurun hiyerarşi hakkında olan görüşünüz nedir?", minWords: 15 },
         { id: "incidentArea", title: "Stajyer memurun olay bölgesi hakkında olan görüşünüz nedir?", minWords: 25 },
-        { id: "equipmentKnowledge", title: "Stajyer memurun ekipman bilgisi hakkında olan görüşünüz nedir?", minWords: 20 },
-        { id: "mirandaRights", title: "Stajyer memurun miranda hakları hakkında olan görüşünüz nedir?", minWords: 15 },
+        { id: "equipmentKnowledge", title: 'Stajyer memurun ekipman bilgisi hakkında olan görüşünüz nedir? <span style="color: red;">*</span>', minWords: 20 },
+        { id: "mirandaRights", title: 'Stajyer memurun miranda hakları hakkında olan görüşünüz nedir? <span style="color: red;">*</span>', minWords: 15 },
         { id: "vehicleUsage", title: "Stajyer memurun araç kullanımı hakkında olan görüşünüz nedir?", minWords: 15 },
-            ];
+    ];
 
             const questionsContainer = document.getElementById("questionsContainer");
             questions.forEach(q => {
