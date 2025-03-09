@@ -283,22 +283,45 @@
         { id: "vehicleUsage", title: "Stajyer memurun araç kullanımı hakkında olan görüşünüz nedir?", minWords: 15 },
     ];
 
-            const questionsContainer = document.getElementById("questionsContainer");
-            questions.forEach(q => {
-                const questionHTML = `
-                    <div class="form-group">
-                        <label for="${q.id}">● ${q.title}</label>
-                        <textarea id="${q.id}" rows="3" placeholder="Minimum ${q.minWords} kelimelik bilgilendirme giriniz."></textarea>
-                        <div class="radio-group">
-                            <label><input type="radio" name="${q.id}Status" value="Yeterli" checked> Yeterli</label>
-                            <label><input type="radio" name="${q.id}Status" value="Orta"> Orta</label>
-                            <label><input type="radio" name="${q.id}Status" value="Yetersiz"> Yetersiz</label>
-                        </div>
-                    </div>
-                `;
-                questionsContainer.innerHTML += questionHTML;
-            });
-        }
+    const questionsContainer = document.getElementById("questionsContainer");
+
+questions.forEach(q => {
+    const questionHTML = `
+        <div class="form-group">
+            <label for="${q.id}">● ${q.title}</label>
+            <textarea id="${q.id}" rows="3" placeholder="Minimum ${q.minWords} kelimelik bilgilendirme giriniz." data-min-words="${q.minWords}"></textarea>
+            <div id="${q.id}WordCount" class="word-count">Kelime Sayısı: 0</div>
+            <div class="radio-group">
+                <label><input type="radio" name="${q.id}Status" value="Yeterli" checked> Yeterli</label>
+                <label><input type="radio" name="${q.id}Status" value="Orta"> Orta</label>
+                <label><input type="radio" name="${q.id}Status" value="Yetersiz"> Yetersiz</label>
+            </div>
+        </div>
+    `;
+    questionsContainer.innerHTML += questionHTML;
+});
+
+// Karakter sayacı hesaplama bölümü
+const textareas = document.querySelectorAll('textarea');
+textareas.forEach(textarea => {
+    textarea.addEventListener('input', function() {
+        const minWords = this.getAttribute('data-min-words');
+        countWords(this.id, minWords);
+    });
+});
+
+function countWords(textareaId, minWords) {
+    const text = document.getElementById(textareaId).value.trim();
+    const wordCount = text === "" ? 0 : text.split(/\s+/).length;
+    const wordCountDiv = document.getElementById(`${textareaId}WordCount`);
+    wordCountDiv.innerText = `Kelime Sayısı: ${wordCount}`;
+    
+    if (wordCount < minWords) {
+        wordCountDiv.style.color = 'red';
+    } else {
+        wordCountDiv.style.color = 'green';
+    }
+}}
 
     function generateBBCode() {
     document.getElementById("loadingContainer").style.display = "block";
